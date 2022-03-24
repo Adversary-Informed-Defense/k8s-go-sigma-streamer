@@ -1,0 +1,42 @@
+helmDefaults:
+  createNamespace: false
+
+repositories:
+  - name: bitnami
+    url: https://charts.bitnami.com/bitnami
+  - name: onechart
+    url: https://chart.onechart.dev
+
+releases:
+  - name: kafka
+    namespace: se
+    chart: bitnami/kafka
+    values:
+      - logRetentionBytes: _536870912
+  - name: sigma-engine
+    namespace: se
+    chart: ../charts/sigma-engine/
+    values:
+      - onechart:
+          image:
+            repository: "{{ .Values.registry }}/se_kafka"
+            pullPolicy: {{ .Values.pullPolicy }}
+      - ../charts/sigma-engine/values.se_kafka.yaml
+
+environments:
+  default:
+    values:
+    - registry:
+        singe
+  csn:
+    values:
+    - registry:
+        sig-c-e-docker.nexus.boozallencsn.com/singe
+  northern-lights:
+    values:
+    - registry:
+        677543473621.dkr.ecr.us-east-1.amazonaws.com/singe
+    - pullPolicy: Always
+
+values:
+- pullPolicy: IfNotPresent

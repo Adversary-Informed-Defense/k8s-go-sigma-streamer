@@ -1,0 +1,66 @@
+
+# https://github.com/gimlet-io/onechart/blob/master/charts/onechart/templates/deployment.yaml
+
+onechart:
+  image:
+    tag: latest
+    pullPolicy: IfNotPresent
+
+  replicas: 1
+
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 2000Mi
+    requests:
+      cpu: 500m
+      memory: 500Mi
+
+  vars:
+    KAFKA_SERVICE_HOST: kafka.se.svc.cluster.local
+    KAFKA_SERVICE_PORT: 9092
+    OUTPUT_TOPIC: alerts
+    RULESET_PATH: /opt/rules/
+    DELETE_RULESETS: |
+      /opt/resources/sigma-rules/network/cisco
+    INGEST_TOPICS: |
+      panw-panos
+      checkpoint-firewall
+      cdns-cdns
+      system-syslog
+      zeek-kerberos
+      zeek-intel
+      zeek-pe
+      zeek-ssl
+      zeek-snmp
+      zeek-smb_mapping
+      zeek-ntlm
+      zeek-dce_rpc
+      zeek-irc
+      zeek-rdp
+      zeek-radius
+      zeek-rfb
+      zeek-notice
+      zeek-tunnel
+      zeek-smb_cmd
+      zeek-ssh
+      zeek-smb_files
+      zeek-http
+      zeek-smtp
+      zeek-mysql
+      zeek-dhcp
+      zeek-files
+      zeek-sip
+      zeek-socks
+      zeek-traceroute
+      zeek-dns
+      zeek-modbus
+      zeek-dnp3
+      zeek-weird
+      zeek-dpd
+      zeek-conn
+      juniper-netscreen
+      juniper-junos
+      winlog-sysmon
+      winlog-other
+      winlogbeat-ecs

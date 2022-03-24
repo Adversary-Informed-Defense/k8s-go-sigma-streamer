@@ -1,0 +1,9 @@
+apiVersion: v2
+name: sigma-engine
+version: 1.0.0
+description: This Chart deploys sigma-engine.
+dependencies:
+- name: onechart
+  version: 0.32.0
+  repository: https://chart.onechart.dev
+

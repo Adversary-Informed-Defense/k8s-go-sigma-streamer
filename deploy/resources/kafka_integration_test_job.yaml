@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: integration-test
+spec:
+  template:
+    spec:
+      containers:
+      - name: integration-test
+        image: singe/integration_test
+        imagePullPolicy: IfNotPresent
+        command: ["python", "produce_kafka_test_data.py"] 
+      restartPolicy: Never
+  backoffLimit: 1
