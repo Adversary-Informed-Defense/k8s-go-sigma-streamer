@@ -39,4 +39,4 @@ make test    # Run integration test to run sample data through engine
 ```
 
 ### Disclaimer
-This application uses the go-sigma-rule-engine libraries Foo (https://github.com/markuskont/go-sigma-rule-engine) available under the Apache 2.0 license, which can be obtained from http://www.apache.org/licenses/LICENSE-2.0.
+This application uses the go-sigma-rule-engine library (https://github.com/markuskont/go-sigma-rule-engine) available under the Apache 2.0 license, which can be obtained from http://www.apache.org/licenses/LICENSE-2.0.
